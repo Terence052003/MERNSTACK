@@ -14,7 +14,7 @@ const fruitSchema = new mongoose.Schema({
         required:true,
     },
     isHealthy:{
-        type:Boolean,
+        type:String,
         required:true,
     }
 },

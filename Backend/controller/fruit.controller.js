@@ -1,4 +1,5 @@
 import Fruit from "../models/fruits.model.js";
+import FruitLogin from "../models/fruit.login.js";
 import mongoose from "mongoose";
 
 export const getFruit = async (req, res) => {
@@ -10,6 +11,17 @@ export const getFruit = async (req, res) => {
         res.status(500).json({success: false, error: error.message});
     }
 };
+
+export const loginAccount = async (req, res) => {
+    const fruitLogin = new FruitLogin(req.body);
+    try {
+        const savedFruitLogin = await fruitLogin.save();
+        res.status(200).json({success: true, data: savedFruitLogin});
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({success: false, error: error.message});
+    }
+}
 
 export const createFruit = async (req, res) => {
     const fruit = req.body;
